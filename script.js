@@ -80,7 +80,7 @@ function generatePassword() {
 
   else {
     alert("Please enter a number between 8 and 128!");
-    location.reload(); _
+    location.reload();
   }
 
 
