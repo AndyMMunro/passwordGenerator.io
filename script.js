@@ -1,6 +1,21 @@
-
+// Assignment Code
 var generateBtn = document.querySelector("#generate");
-generateBtn.addEventListener("click", generatePassword);
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+
+
+
 
 function generatePassword() {
 
@@ -35,8 +50,8 @@ function generatePassword() {
   if (symbolCase.toLowerCase() === "y") {
     passWordArr.push("symbolCase");
   }
-  if (passWordLength > 8 && passWordLength < 128) {
-    for (var i = 0; i <= passWordLength; i++) {
+  if (passWordLength >= 8 && passWordLength <= 128) {
+    for (var i = 0; i < passWordLength; i++) {
       charTypeSelection = Math.floor(Math.random() * passWordArr.length);
 
 
@@ -50,7 +65,7 @@ function generatePassword() {
         passWordOutPut = passWordOutPut + upperCaseCharacters[randomNumberSelection]
       }
 
-      if (passWordArr[charTypeSelection] === "numbersCase") {
+      if (passWordArr[charTypeSelection] === "numberCase") {
         randomNumberSelection = Math.floor(Math.random() * numbers.length);
         passWordOutPut = passWordOutPut + numbers[randomNumberSelection]
       }
@@ -58,10 +73,12 @@ function generatePassword() {
         randomNumberSelection = Math.floor(Math.random() * symbols.length);
         passWordOutPut = passWordOutPut + symbols[randomNumberSelection]
       }
+      // console.log(passWordArr[charTypeSelection])
+      // console.log(charTypeSelection)
     }
-
     alert("Your new password is:  " + passWordOutPut);
-    document.getElementById("passWordOutPut").innerHTML = passWordOutPut
+    return passWordOutPut;
+
   }
 
   else {
